@@ -1,83 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apology</title>
+    <title>I'm Sorry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* General body styling */
         body {
-            background-color: #FFF8E1; /* Cream background */
-            font-family: Arial, sans-serif;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fce3e0 0%, #f7d1d1 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #e74c3c;
+            color: white;
             padding: 20px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.5rem;
+            font-weight: 600;
+            animation: fadeInDown 1s ease-out forwards;
         }
-        .envelope {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-image: url('https://images.pexels.com/photos/4226727/pexels-photo-4226727.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); /* Envelope image URL */
-            background-size: cover;
-            cursor: pointer;
-            margin: 50px auto;
-            animation: bounce 1s infinite alternate; /* Bounce animation */
-        }
-        @keyframes bounce {
+
+        @keyframes fadeInDown {
             0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Content container styling */
+        .container {
+            max-width: 700px;
+            width: 90%;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
                 transform: translateY(0);
             }
-            100% {
-                transform: translateY(-20px);
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Paragraph styling */
+        p {
+            font-size: 1.25rem;
+            color: #555;
+            margin: 20px 0;
+            line-height: 1.7;
+            text-align: justify;
+            letter-spacing: 0.5px;
+        }
+
+        p:first-of-type {
+            font-weight: 600;
+            color: #e74c3c;
+        }
+
+        /* Footer Styling */
+        footer {
+            margin-top: 30px;
+            color: #888;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #e74c3c;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 25px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer a:hover {
+            background-color: #e74c3c;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Button Styling */
+        .dm-button {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 30px;
+            margin-top: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dm-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 30px;
+            }
+
+            footer {
+                font-size: 1rem;
+            }
+
+            .dm-button {
+                font-size: 1rem;
+                padding: 10px 25px;
             }
         }
-        .open-me {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        h1 {
-            color: #FF1493; /* Hot pink */
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .signature {
-            font-style: italic;
-            color: #999;
-        }
-        .hidden {
-            display: none;
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            footer {
+                font-size: 0.9rem;
+            }
+
+            .dm-button {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="envelope" onclick="showApologyMessage()">
-        <div class="open-me">Tap Me</div>
-    </div>
-    <div class="hidden" id="apologyMessage">
-        <h1>I'm sorry baby girl. 😞 </h1>
+    <header>
+        I'm Sorry
+    </header>
+
+    <div class="container">
+        <img src="https://i.pinimg.com/originals/2c/ec/45/2cec453cc9fb64fb5621e103eb81bc05.jpg" alt="A meaningful image">
         <p>
-            I'm sorry for my mistake, please forgive me.
+            I am really sorry, and shouldn't have accepted a No. I never wanted to hurt you, and I truly regret that my actions might have made you feel bad.
         </p>
+
         <p>
-             I was a big asshole for saying all of that to you, I hate myself for it, I'm really sorry baby, please forgive me. I won't let anyone or anything ever get in-between us again. I promise. 
+             I know that we still have a lot of things ahead of us to work through. But I hope you can understand.
         </p>
-        <p class="signature">
-            - Your babe. 🥺
-        </p>
+
+       
     </div>
-    <script>
-        function showApologyMessage() {
-            var apologyDiv = document.getElementById("apologyMessage");
-            apologyDiv.classList.remove("hidden");
-        }
-    </script>
 </body>
+
 </html>
